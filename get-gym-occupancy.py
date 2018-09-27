@@ -14,7 +14,7 @@ if index == -1:
 
 char = html[index]
 
-occupancy = "";
+occupancy = ""
 
 while char.isdigit():
     occupancy += char
