@@ -1,4 +1,7 @@
 import urllib.request
+import csv
+import sys
+import datetime
 
 url = "https://www.st-andrews.ac.uk/sport/"
 search = "Occupancy: "
@@ -22,3 +25,12 @@ while char.isdigit():
         break
 
 print(occupancy)
+
+# Handle recording
+if len(sys.argv) == 2:
+
+        date = datetime.datetime.now().replace(microsecond=0).isoformat()
+        with open(sys.argv[1], 'a', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            writer.writerow([date, occupancy])
